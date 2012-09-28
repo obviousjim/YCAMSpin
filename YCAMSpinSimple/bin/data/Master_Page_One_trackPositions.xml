@@ -1,0 +1,44 @@
+<positions>
+    <element name="BottomClip">
+        <x>0.000000000</x>
+        <y>499.000000000</y>
+        <width>960.000000000</width>
+        <height>86.000000000</height>
+    </element>
+    <element name="FarClip">
+        <x>0.000000000</x>
+        <y>52.000000000</y>
+        <width>960.000000000</width>
+        <height>141.000000000</height>
+    </element>
+    <element name="LeftClip">
+        <x>0.000000000</x>
+        <y>609.000000000</y>
+        <width>960.000000000</width>
+        <height>70.000000000</height>
+    </element>
+    <element name="NearClip">
+        <x>0.000000000</x>
+        <y>217.000000000</y>
+        <width>960.000000000</width>
+        <height>124.000000000</height>
+    </element>
+    <element name="RightClip">
+        <x>0.000000000</x>
+        <y>703.000000000</y>
+        <width>960.000000000</width>
+        <height>64.000000000</height>
+    </element>
+    <element name="Sequencer">
+        <x>0.000000000</x>
+        <y>791.000000000</y>
+        <width>960.000000000</width>
+        <height>61.000000000</height>
+    </element>
+    <element name="TopClip">
+        <x>0.000000000</x>
+        <y>365.000000000</y>
+        <width>960.000000000</width>
+        <height>110.000000000</height>
+    </element>
+</positions>
