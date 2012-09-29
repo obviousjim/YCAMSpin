@@ -9,6 +9,13 @@
 #include "ofxRGBDMeshBuilder.h"
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
+#include "ofxTLCameraTrack.h"
+
+#include "CloudInterludeParticleGenerator.h"
+#include "CloudInterludeForcePerlin.h"
+#include "CloudInterludeForceDrag.h"
+#include "CloudInterludeForceMeshAttractor.h"
+#include "YCAMSpinForce.h"
 
 class testApp : public ofBaseApp{
   public:
@@ -27,18 +34,15 @@ class testApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 	void exit();
 	
+	
 	ofxTLDepthImageSequence sequence1;
-//	ofxTLDepthImageSequence sequence2;
-//	ofxTLDepthImageSequence sequence3;
+	ofxTLCameraTrack camTrack;
 	
 	ofxTimeline masterTimeline;
 	ofxTimeline sequenceTimeline;
 	
-	ofxRGBDMeshBuilder mesh;
+	ofxRGBDMeshBuilder meshBuilder;
 	ofxGameCamera cam;
-	
-//	float farClip;
-//	float nearClip;
 	
 	bool colorMeshes;
 	ofColor mesh1Color;
@@ -48,14 +52,20 @@ class testApp : public ofBaseApp{
 	ofRectangle prev1;
 
 	string sequence1Path;
-//	string sequence2Path;
-//	string sequence3Path;
-//	string sequence1PathXML;
-//	string sequence2PathXML;
-//	string sequence3PathXML;
 
 	ofxUICanvas* gui;
 	
 	ofRectangle mainRect;
-	bool isSetup;
+
+	vector<CloudInterludeParticleGenerator> emmiters;
+    CloudInterludeForcePerlin* perlinForce;
+    CloudInterludeForceDrag* dragForce;
+    CloudInterludeForceMeshAttractor* meshForce;
+	YCAMSpinForce* spinForce;
+	
+    ofVboMesh mesh;
+    ofShader pointCloudDOF;
+    int totalParticles;
+	
+	void copyVertsToMesh();
 };

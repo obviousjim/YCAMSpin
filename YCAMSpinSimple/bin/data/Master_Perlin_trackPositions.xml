@@ -2,19 +2,19 @@
     <element name="Perlin Amplitude">
         <x>0.000000000</x>
         <y>70.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="Perlin Density">
         <x>0.000000000</x>
         <y>134.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="Perlin Speed">
         <x>0.000000000</x>
         <y>198.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="Sequencer">

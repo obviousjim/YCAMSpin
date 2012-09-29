@@ -411,6 +411,7 @@
 		E728C3961615ADC30083D311 /* CloudInterludeForcePerlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeForcePerlin.h; sourceTree = "<group>"; };
 		E728C3971615ADC30083D311 /* CloudInterludeParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeParticle.h; sourceTree = "<group>"; };
 		E728C3981615ADC40083D311 /* CloudInterludeParticleGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeParticleGenerator.h; sourceTree = "<group>"; };
+		E728C39E1615EB3D0083D311 /* YCAMSpinForce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCAMSpinForce.h; sourceTree = "<group>"; };
 		E7C5D3F51612CD76006E514C /* ofxMayaCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMayaCam.cpp; sourceTree = "<group>"; };
 		E7C5D3F61612CD76006E514C /* ofxMayaCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMayaCam.h; sourceTree = "<group>"; };
 		E7C5D3F71612CD76006E514C /* ofxMayaCam_impl_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxMayaCam_impl_mac.mm; sourceTree = "<group>"; };
@@ -593,6 +594,7 @@
 				E728C3961615ADC30083D311 /* CloudInterludeForcePerlin.h */,
 				E728C3971615ADC30083D311 /* CloudInterludeParticle.h */,
 				E728C3981615ADC40083D311 /* CloudInterludeParticleGenerator.h */,
+				E728C39E1615EB3D0083D311 /* YCAMSpinForce.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.mm */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -630,8 +632,8 @@
 		E715EAB1160C515400F7699D /* ofxTimeline */ = {
 			isa = PBXGroup;
 			children = (
-				E715EAB2160C515400F7699D /* ofxTLCameraTrack.cpp */,
 				E715EAB3160C515400F7699D /* ofxTLCameraTrack.h */,
+				E715EAB2160C515400F7699D /* ofxTLCameraTrack.cpp */,
 			);
 			path = ofxTimeline;
 			sourceTree = "<group>";

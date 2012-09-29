@@ -8,7 +8,7 @@ void testApp::setup(){
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
 	ofToggleFullscreen();
-	isSetup = false;
+
 
 	ofxTimeline::removeCocoaMenusFromGlut("YCAM SPIN");
 	
@@ -25,17 +25,22 @@ void testApp::setup(){
 	
 	int absoluteMaxParticles = 50000;
 	masterTimeline.setPageName("MeshClips");
+	
+	camTrack.getCameraTrack().camera = &cam;
+	
+	masterTimeline.addTrack("Camera", &camTrack);
 	masterTimeline.addCurves("FarClip", ofRange(400, 3000), 3000);
 	masterTimeline.addCurves("NearClip", ofRange(400, 3000), 400);
 	masterTimeline.addCurves("TopClip", ofRange(0., 1.0), .0);
 	masterTimeline.addCurves("BottomClip", ofRange(0., 1.0), 1.0);
 	masterTimeline.addCurves("LeftClip",ofRange(0., 1.0), .0);
 	masterTimeline.addCurves("RightClip", ofRange(0., 1.0), 1.0);
+
 	
     masterTimeline.addPage("Particles");
     masterTimeline.addCurves("Max Particles", "maxParticles.xml", ofRange(0, absoluteMaxParticles) );
-    masterTimeline.addCurves("Birthrate", "particleBirthrate.xml", ofRange(.000, .05) );
-    masterTimeline.addCurves("Lifespan", "particleLifespan.xml", ofRange(2, 900) );
+    masterTimeline.addCurves("Birthrate", "particleBirthrate.xml", ofRange(.000, .5) );
+    masterTimeline.addCurves("Lifespan", "particleLifespan.xml", ofRange(2, 200) );
     masterTimeline.addCurves("Lifespan Variance", "particleLifespanVariance.xml", ofRange(0, 100) );
     masterTimeline.addCurves("Drag Force", "particleDragFroce.xml", ofRange(0, 1.0), 0);
     
@@ -50,8 +55,8 @@ void testApp::setup(){
     masterTimeline.addCurves("Perlin Amplitude", "perlinAmplitude.xml", ofRange(0, sqrtf(20)) );
     masterTimeline.addCurves("Perlin Density", "perlinDensity.xml", ofRange(0, sqrtf(2000)));
     masterTimeline.addCurves("Perlin Speed", "perlinSpeed.xml", ofRange(0, sqrtf(2)), 0);
-	
-	masterTimeline.addFlags("Sequencer");
+
+	masterTimeline.setCurrentPage(0);
 	
 	sequence1Path = "/Users/focus/Desktop/__RGBD_Bins/YCAM_SPIN/YCAM_Y_CAM1/TAKE_09_21_15_38_28/depth";
 
@@ -71,16 +76,38 @@ void testApp::setup(){
 	masterTimeline.setLoopType(OF_LOOP_NORMAL);
 	calculatePreviewRects();
 	
-	mesh.setDepthOnly();
+	meshBuilder.setDepthOnly();
 	
-	mesh.setSimplification(2);
-	
-	mesh.setDepthPixels(sequence1.getDepthImageSequence()->getPixels());
+	meshBuilder.setSimplification(2);
+	meshBuilder.cacheValidVertices = true;
+	meshBuilder.setDepthPixels(sequence1.getDepthImageSequence()->getPixels());
 	
 	cam.setup();
 	cam.autosavePosition = true;
 	cam.loadCameraPosition();
 	cam.setFarClip(4000);
+	
+    perlinForce = new CloudInterludeForcePerlin();
+	spinForce = new YCAMSpinForce();
+//    dragForce   = new CloudInterludeForceDrag();
+//    meshForce   = new CloudInterludeForceMeshAttractor();
+//    meshForce->mesh = &meshBuilder.getMesh();
+    
+    for(int i = 0; i < 320*240; i++){
+    	CloudInterludeParticleGenerator g;
+        g.addForce(perlinForce);
+		g.addForce(spinForce);
+		
+//        g.addForce(dragForce);
+		//        g.addForce(meshForce);
+        emmiters.push_back(g);
+    }
+    
+    for(int i = 0; i < absoluteMaxParticles; i++){
+    	mesh.addVertex(ofVec3f(0,0,0));
+        mesh.addColor(ofFloatColor(1.0,1.0,1.0,1.0));
+        mesh.addTexCoord(ofVec2f(0.0,0.0));
+    }
 	
 //	gui = new ofxUICanvas(0,0, 200, ofGetHeight());
 //	gui->setWidgetFontSize(OFX_UI_FONT_SMALL);
@@ -100,28 +127,112 @@ void testApp::update(){
 	float leftClip = masterTimeline.getValue("LeftClip");
 	
 	if(sequence1.isFrameNew() ||
-	   farClip != mesh.farClip ||
-	   nearClip != mesh.nearClip ||
-	   topClip != mesh.topClip ||
-	   bottomClip != mesh.bottomClip ||
-	   leftClip != mesh.leftClip ||
-	   rightClip != mesh.rightClip)
+	   farClip != meshBuilder.farClip ||
+	   nearClip != meshBuilder.nearClip ||
+	   topClip != meshBuilder.topClip ||
+	   bottomClip != meshBuilder.bottomClip ||
+	   leftClip != meshBuilder.leftClip ||
+	   rightClip != meshBuilder.rightClip)
 	{
-		mesh.farClip = farClip;
-		mesh.nearClip = nearClip;
-		mesh.topClip = topClip;
-		mesh.bottomClip = bottomClip;
-		mesh.leftClip = leftClip;
-		mesh.rightClip = rightClip;
+		meshBuilder.farClip = farClip;
+		meshBuilder.nearClip = nearClip;
+		meshBuilder.topClip = topClip;
+		meshBuilder.bottomClip = bottomClip;
+		meshBuilder.leftClip = leftClip;
+		meshBuilder.rightClip = rightClip;
 		
-		mesh.update();
+		meshBuilder.update();
 	}
+	
+//    dragForce->dragForce = powf( masterTimeline.getValue("Drag Force"), 2.0);
+    perlinForce->amplitude = powf( masterTimeline.getValue("Perlin Amplitude"), 2.0);
+    perlinForce->density = powf( masterTimeline.getValue("Perlin Density"), 2.0);
+    perlinForce->speed = powf( masterTimeline.getValue("Perlin Speed"), 2.0);
+    
+	
+//    dragForce->update();
+    perlinForce->update();
+	//    meshForce->update();
+    
+
+    
+    //GENERATOR
+    float birthRate = masterTimeline.getValue("Birthrate");
+    float lifeSpan  = masterTimeline.getValue("Lifespan");
+    float lifeSpanVariance = masterTimeline.getValue("Lifespan Variance");
+    int maxParticles = masterTimeline.getValue("Max Particles");
+//    float typeChance = masterTimeline.getValue("Chance of Attaching Type");
+    totalParticles = 0;
+    for(int i = 0; i < emmiters.size(); i++){
+    	emmiters[i].birthRate = 0;
+        emmiters[i].freeze = false;
+        totalParticles += emmiters[i].particles.size();
+    }
+	
+    //for(int i = 0; i < meshBuilder.getMesh().getVertices().size(); i++){
+	for(int i = 0; i < meshBuilder.validVertIndices.size(); i++){
+	
+        CloudInterludeParticleGenerator& g = emmiters[i];
+//        bool valid = renderer.isVertexValid(i);
+//		bool valid = meshBuilder.getMesh().getVertices()[i].z != 0;
+        totalParticles += g.particles.size();
+//        if(valid){
+            g.birthRate = birthRate; //disable invisible verts
+            g.lifespan  = lifeSpan;
+            g.lifespanVariance = lifeSpanVariance;
+            g.position =  meshBuilder.getMesh().getVertices()[meshBuilder.validVertIndices[i]];
+//            if(useColors && colorPalette.isAllocated()){
+//                g.texcoord = renderer.getMesh().getTexCoord( renderer.vertexIndex(i) );
+//            }
+            g.remainingParticles = maxParticles - totalParticles;
+			g.showType = false;
+//            g.showType = showType;
+//            g.typeChance = typeChance;
+//        }
+    }
+//    cout << " total particles " << totalParticles << endl;
+    for(int i = 0; i < emmiters.size(); i++){
+    	emmiters[i].update();
+    }
+	
+	copyVertsToMesh();
+}
+
+//--------------------------------------------------------------
+void testApp::copyVertsToMesh(){
+    int meshIndex = 0;
+    vector<ofVec3f>& meshVertices = mesh.getVertices();
+    vector<ofFloatColor>& meshColors = mesh.getColors();
+    vector<ofVec2f>& meshTexCoords = mesh.getTexCoords();
+    for(int i = 0; i < emmiters.size(); i++){
+        for(int v = 0; v < emmiters[i].particles.size(); v++){
+            meshVertices[meshIndex] = emmiters[i].particles[v].position;
+            float color = emmiters[i].particles[v].energy / emmiters[i].particles[v].initialEnergy;
+            meshColors[meshIndex] = ofFloatColor(color,color,color,color);
+//            if(useColors){
+//                meshTexCoords[meshIndex] = emmiters[i].particles[v].texcoord;
+//            }
+            meshIndex++;
+            if(meshIndex == meshVertices.size()){
+                ofLogError("exceeded max particles");
+                return;
+            }
+        }
+    }
+//	cout << "mesh index reached " << meshIndex << endl;
+    memset(&(meshColors[meshIndex].r), 0, sizeof(ofFloatColor)*(meshColors.size()-meshIndex));
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	
+	ofSetColor(255);
+	masterTimeline.draw();
+	sequenceTimeline.setOffset(masterTimeline.getBottomLeft());
+	sequenceTimeline.draw();
 	
+	masterTimeline.getFont().drawString(ofToString(ofGetFrameRate()), 0, ofGetHeight()-10);
+
 	if(showPointcloud){
 		ofPushStyle();
 		
@@ -136,24 +247,72 @@ void testApp::draw(){
 		if(colorMeshes){
 			ofSetColor(mesh1Color);
 		}
-		mesh.draw();
+		meshBuilder.draw();
+		float focalRange = powf(masterTimeline.getValue("DOF Range"), 2);
+		float focalDistance = powf(masterTimeline.getValue("DOF Distance"), 2);
+
+		//render dots
+		ofPushStyle();
+		glPushMatrix();
+		glPushAttrib(GL_ENABLE_BIT);
+		ofScale(1,-1,1);
+		ofEnableAlphaBlending();
+//		if(useShaderToggle){
+		if(false){
+			pointCloudDOF.begin();
+//			if(depthRangeMultiply) focalRange *= 10;
+			pointCloudDOF.setUniform1f("minSize", masterTimeline.getValue("Min Point Size"));
+			pointCloudDOF.setUniform1f("maxSize", masterTimeline.getValue("Max Point Size"));
+			pointCloudDOF.setUniform1f("focalRange", focalRange);
+			pointCloudDOF.setUniform1f("focalDistance", focalDistance);
+			pointCloudDOF.setUniform1i("useTexture", 0);
+//			pointCloudDOF.setUniform1i("useTexture", useColors && colorPalette.isAllocated() ? 1 : 0);
+		}
+		else{
+			glPointSize(masterTimeline.getValue("Min Point Size"));
+		}
+		
+//		if(useColors && colorPalette.isAllocated()){
+//			colorPalette.bind();
+//		}
+		//    if(drawPointcloud){
+		//        ofPushMatrix();
+		//        ofScale(1,-1,1);
+		//        ofEnableAlphaBlending();
+		//        renderer.drawPointCloud(false);
+		//        ofPopMatrix();
+		//	}
+		
+		//ofEnableBlendMode(OF_BLENDMODE_ADD);
+		ofEnableBlendMode(OF_BLENDMODE_SCREEN);
+		glEnable(GL_POINT_SMOOTH); // makes circular points
+		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE_ARB);	// allows per-point size
+//		glPointSize(4);
+		
+//		cout << "Drawing " << mesh.getNumVertices() << " Particles " << endl;
+		mesh.drawVertices();
+		
+//		if(useColors && colorPalette.isAllocated()){
+//			colorPalette.unbind();
+//		}
+//		
+		if(false){
+			pointCloudDOF.end();
+		}
+		
+		glPopAttrib();
+		glPopMatrix();
+		ofPopStyle();
 
 		cam.end();
 		ofPopStyle();
+		 
 	}
 	else{
 		ofSetColor(255, 100);
 		sequence1.getCurrentDepthImage().draw(prev1);
-//		sequence2.getCurrentDepthImage().draw(prev2);
-//		sequence3.getCurrentDepthImage().draw(prev3);
 	}
 
-	ofSetColor(255);
-	masterTimeline.draw();
-	sequenceTimeline.setOffset(masterTimeline.getBottomLeft());
-	sequenceTimeline.draw();
-	
-	masterTimeline.getFont().drawString(ofToString(ofGetFrameRate()), 0, ofGetHeight()-10);
 
 //	cout << "draw complete" << endl;
 }
@@ -188,16 +347,35 @@ void testApp::keyReleased(int key){
 	}
 	
 	if(key == 'P'){
-		mesh.setPivotToMeshCenter();
-		cout << mesh.pivot << endl;
-		cam.setPosition(mesh.pivot);
+		meshBuilder.setPivotToMeshCenter();
+		cam.setPosition(meshBuilder.pivot);
 		cam.setOrientation(ofQuaternion(180, ofVec3f(0,1,0)));
+	}
+	
+	if(key == 'C'){
+		for(int i = 0; i < emmiters.size(); i++){
+			emmiters[i].particles.clear();
+		}
+	}
+	
+	if(key == 'S'){
+		meshBuilder.setPivotToMeshCenter();
+		spinForce->center = meshBuilder.pivot;
+	}
+	
+	if(key == 'T'){
+		camTrack.sample();
+	}
+	if(key == 'L'){
+		camTrack.lockCameraToTrack = !camTrack.lockCameraToTrack;
+		cam.applyRotation = cam.applyTranslation = !camTrack.lockCameraToTrack;
+		cout << "locked camera? " << camTrack.lockCameraToTrack << endl;
 	}
 }
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
-	cam.applyRotation = cam.applyTranslation = mainRect.inside(x,y);
+	cam.applyRotation = cam.applyTranslation = !camTrack.lockCameraToTrack && mainRect.inside(x,y);
 }
 
 //--------------------------------------------------------------
@@ -233,6 +411,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 //--------------------------------------------------------------
 void testApp::exit(){
 	sequence1.disable();
+	camTrack.disable();
 //	sequence2.disable();
 //	sequence3.disable();
 	
