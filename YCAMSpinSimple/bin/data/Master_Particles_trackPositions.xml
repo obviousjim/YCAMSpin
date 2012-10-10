@@ -1,32 +1,38 @@
 <positions>
     <element name="Birthrate">
         <x>0.000000000</x>
-        <y>134.000000000</y>
-        <width>800.000000000</width>
-        <height>40.000000000</height>
+        <y>294.000000000</y>
+        <width>960.000000000</width>
+        <height>209.000000000</height>
     </element>
     <element name="Drag Force">
         <x>0.000000000</x>
-        <y>326.000000000</y>
+        <y>396.000000000</y>
         <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="Lifespan">
         <x>0.000000000</x>
-        <y>198.000000000</y>
-        <width>800.000000000</width>
-        <height>40.000000000</height>
+        <y>527.000000000</y>
+        <width>960.000000000</width>
+        <height>293.000000000</height>
     </element>
     <element name="Lifespan Variance">
         <x>0.000000000</x>
-        <y>262.000000000</y>
-        <width>800.000000000</width>
+        <y>844.000000000</y>
+        <width>960.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="Max Particles">
         <x>0.000000000</x>
+        <y>140.000000000</y>
+        <width>960.000000000</width>
+        <height>130.000000000</height>
+    </element>
+    <element name="cue_particles">
+        <x>0.000000000</x>
         <y>70.000000000</y>
-        <width>800.000000000</width>
-        <height>40.000000000</height>
+        <width>960.000000000</width>
+        <height>46.000000000</height>
     </element>
 </positions>

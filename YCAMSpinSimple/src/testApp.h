@@ -35,26 +35,25 @@ class testApp : public ofBaseApp{
 	void exit();
 	
 	
+	void flagReceived(ofxTLBangEventArgs& bang);
+	
 	ofxTLDepthImageSequence sequence1;
 	ofxTLCameraTrack camTrack;
+	ofxTLFlags* cueFlags;
 	
 	ofxTimeline masterTimeline;
 	ofxTimeline sequenceTimeline;
+	bool drawCameraTrack;
 	
 	ofxRGBDMeshBuilder meshBuilder;
 	ofxGameCamera cam;
 	
-	bool colorMeshes;
-	ofColor mesh1Color;
 
 	bool showPointcloud;
 	void calculatePreviewRects();
 	ofRectangle prev1;
 
 	string sequence1Path;
-
-	ofxUICanvas* gui;
-	
 	ofRectangle mainRect;
 
 	vector<CloudInterludeParticleGenerator> emmiters;
@@ -68,4 +67,9 @@ class testApp : public ofBaseApp{
     int totalParticles;
 	
 	void copyVertsToMesh();
+	
+	vector<ofMesh> meshes;
+
+	
+	
 };

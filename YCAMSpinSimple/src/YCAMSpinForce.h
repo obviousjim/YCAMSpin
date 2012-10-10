@@ -17,7 +17,7 @@ public:
 	float power;
     
     YCAMSpinForce() {
-        power = 2;
+        power = .1;
     }
     
     void update(){

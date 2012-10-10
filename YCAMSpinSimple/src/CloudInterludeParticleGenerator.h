@@ -23,37 +23,43 @@ class CloudInterludeParticleGenerator {
     }
     
     void update(){
-        if(!freeze){
+        if(freeze){
+			return;
+		}
+		
+		numToBear += birthRate;
+		if(numToBear > 1.0 && remainingParticles > 0){
+			CloudInterludeParticle p;
+			p.energy = p.initialEnergy = lifespan + ofRandom(-lifespanVariance/2, lifespanVariance/2);
+//			if(ofRandomuf() > .999){
+//				p.energy *= 50;
+//			}
+			p.origin = p.position = position;
+			p.velocity = direction;
+			p.texcoord = texcoord;
+			if(showType && ofRandomuf() < typeChance){
+				p.hasType = true;
+			}
+			particles.push_back(p);
+			numToBear--;
+			remainingParticles--;
+		}
+		
+		//sacrifice the rest
+		//numToBear -= int(numToBear);
 
-            numToBear += birthRate;
-            while(numToBear > 1.0 && remainingParticles > 0){
-                CloudInterludeParticle p;
-                p.energy = p.initialEnergy = lifespan + ofRandom(-lifespanVariance/2, lifespanVariance/2);
-                p.origin = p.position = position;
-                p.velocity = direction;
-                p.texcoord = texcoord;
-                if(showType && ofRandomuf() < typeChance){
-                    p.hasType = true;
-                }
-                particles.push_back(p);
-                numToBear--;
-                remainingParticles--;
-            }
-            
-            //sacrifice the rest
-            numToBear -= int(numToBear);
-        
-            for(int i = 0; i < forces.size(); i++){
-                forces[i]->applyForce(particles);
-            }
-        
-            for(int i = particles.size()-1; i >= 0; i--){
-                particles[i].update();
-                if(particles[i].energy < 0){
-                    particles.erase(particles.begin() + i); 
-                }
-            }
-        }
+		if(particles.size() > 0){
+			for(int i = 0; i < forces.size(); i++){
+				forces[i]->applyForce(particles);
+			}
+		
+			for(int i = particles.size()-1; i >= 0; i--){
+				particles[i].update();
+				if(particles[i].energy < 0){
+					particles.erase(particles.begin() + i); 
+				}
+			}
+		}
     }
     
     void drawTextDebug(float x, float y){

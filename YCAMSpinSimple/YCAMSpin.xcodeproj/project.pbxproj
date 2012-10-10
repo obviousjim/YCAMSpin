@@ -24,8 +24,6 @@
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
 		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		E715EAB8160C515400F7699D /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E715EAB2160C515400F7699D /* ofxTLCameraTrack.cpp */; };
-		E715EAB9160C515400F7699D /* ofxCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E715EAB6160C515400F7699D /* ofxCameraTrack.cpp */; };
 		E715EADA160C515D00F7699D /* ofxMSATimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E715EAD0160C515D00F7699D /* ofxMSATimer.cpp */; };
 		E715EAF5160C516700F7699D /* ofxTimecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E715EAEC160C516700F7699D /* ofxTimecode.cpp */; };
 		E715F2DA160C517600F7699D /* ofxHotKeys_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E715F27D160C517400F7699D /* ofxHotKeys_impl_mac.mm */; };
@@ -106,6 +104,8 @@
 		E715F6C6160C532F00F7699D /* opencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E715F649160C532E00F7699D /* opencv_objdetect.a */; };
 		E715F6C7160C532F00F7699D /* opencv_video.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E715F64A160C532E00F7699D /* opencv_video.a */; };
 		E715F6F4160C540100F7699D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E715F6F3160C540100F7699D /* Accelerate.framework */; };
+		E7B084CB162534CC001F60C8 /* ofxTLLFO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B084C9162534CC001F60C8 /* ofxTLLFO.cpp */; };
+		E7B084CE16253666001F60C8 /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B084CC16253666001F60C8 /* ofxTLCameraTrack.cpp */; };
 		E7C5D3FF1612CD76006E514C /* ofxMayaCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C5D3F51612CD76006E514C /* ofxMayaCam.cpp */; };
 		E7C5D4001612CD76006E514C /* ofxMayaCam_impl_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7C5D3F71612CD76006E514C /* ofxMayaCam_impl_mac.mm */; };
 		E7C5D4211612DF54006E514C /* ofxGameCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C5D4181612DF54006E514C /* ofxGameCamera.cpp */; };
@@ -166,10 +166,6 @@
 		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E715EAB2160C515400F7699D /* ofxTLCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLCameraTrack.cpp; sourceTree = "<group>"; };
-		E715EAB3160C515400F7699D /* ofxTLCameraTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLCameraTrack.h; sourceTree = "<group>"; };
-		E715EAB6160C515400F7699D /* ofxCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCameraTrack.cpp; sourceTree = "<group>"; };
-		E715EAB7160C515400F7699D /* ofxCameraTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCameraTrack.h; sourceTree = "<group>"; };
 		E715EAD0160C515D00F7699D /* ofxMSATimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMSATimer.cpp; sourceTree = "<group>"; };
 		E715EAD1160C515D00F7699D /* ofxMSATimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMSATimer.h; sourceTree = "<group>"; };
 		E715EAEC160C516700F7699D /* ofxTimecode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTimecode.cpp; sourceTree = "<group>"; };
@@ -209,7 +205,6 @@
 		E715F29D160C517400F7699D /* ofxTLSwitches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLSwitches.h; sourceTree = "<group>"; };
 		E715F29E160C517400F7699D /* ofxTLTicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLTicker.cpp; sourceTree = "<group>"; };
 		E715F29F160C517400F7699D /* ofxTLTicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLTicker.h; sourceTree = "<group>"; };
-		E715F2A0160C517400F7699D /* ofxTLTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLTimeController.h; sourceTree = "<group>"; };
 		E715F2A1160C517400F7699D /* ofxTLTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLTrack.cpp; sourceTree = "<group>"; };
 		E715F2A2160C517400F7699D /* ofxTLTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLTrack.h; sourceTree = "<group>"; };
 		E715F2A3160C517400F7699D /* ofxTLTrackHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLTrackHeader.cpp; sourceTree = "<group>"; };
@@ -412,6 +407,10 @@
 		E728C3971615ADC30083D311 /* CloudInterludeParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeParticle.h; sourceTree = "<group>"; };
 		E728C3981615ADC40083D311 /* CloudInterludeParticleGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeParticleGenerator.h; sourceTree = "<group>"; };
 		E728C39E1615EB3D0083D311 /* YCAMSpinForce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCAMSpinForce.h; sourceTree = "<group>"; };
+		E7B084C9162534CC001F60C8 /* ofxTLLFO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLLFO.cpp; sourceTree = "<group>"; };
+		E7B084CA162534CC001F60C8 /* ofxTLLFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLLFO.h; sourceTree = "<group>"; };
+		E7B084CC16253666001F60C8 /* ofxTLCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLCameraTrack.cpp; sourceTree = "<group>"; };
+		E7B084CD16253666001F60C8 /* ofxTLCameraTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLCameraTrack.h; sourceTree = "<group>"; };
 		E7C5D3F51612CD76006E514C /* ofxMayaCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMayaCam.cpp; sourceTree = "<group>"; };
 		E7C5D3F61612CD76006E514C /* ofxMayaCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMayaCam.h; sourceTree = "<group>"; };
 		E7C5D3F71612CD76006E514C /* ofxMayaCam_impl_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxMayaCam_impl_mac.mm; sourceTree = "<group>"; };
@@ -520,7 +519,6 @@
 				E715EAF9160C516D00F7699D /* ofxTimeline */,
 				E715EADE160C516700F7699D /* ofxTimecode */,
 				E715EABA160C515D00F7699D /* ofxMSATimer */,
-				E715EAAE160C515400F7699D /* ofxCameraTrack */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -611,42 +609,6 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
-		E715EAAE160C515400F7699D /* ofxCameraTrack */ = {
-			isa = PBXGroup;
-			children = (
-				E715EAB0160C515400F7699D /* couples */,
-				E715EAB5160C515400F7699D /* src */,
-			);
-			name = ofxCameraTrack;
-			path = ../../../addons/ofxCameraTrack;
-			sourceTree = "<group>";
-		};
-		E715EAB0160C515400F7699D /* couples */ = {
-			isa = PBXGroup;
-			children = (
-				E715EAB1160C515400F7699D /* ofxTimeline */,
-			);
-			path = couples;
-			sourceTree = "<group>";
-		};
-		E715EAB1160C515400F7699D /* ofxTimeline */ = {
-			isa = PBXGroup;
-			children = (
-				E715EAB3160C515400F7699D /* ofxTLCameraTrack.h */,
-				E715EAB2160C515400F7699D /* ofxTLCameraTrack.cpp */,
-			);
-			path = ofxTimeline;
-			sourceTree = "<group>";
-		};
-		E715EAB5160C515400F7699D /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E715EAB7160C515400F7699D /* ofxCameraTrack.h */,
-				E715EAB6160C515400F7699D /* ofxCameraTrack.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		E715EABA160C515D00F7699D /* ofxMSATimer */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,6 +674,8 @@
 				E715F289160C517400F7699D /* ofxTLCurves.cpp */,
 				E715F28A160C517400F7699D /* ofxTLCurves.h */,
 				E715F28B160C517400F7699D /* ofxTLEvents.h */,
+				E7B084C9162534CC001F60C8 /* ofxTLLFO.cpp */,
+				E7B084CA162534CC001F60C8 /* ofxTLLFO.h */,
 				E715F28C160C517400F7699D /* ofxTLFlags.cpp */,
 				E715F28D160C517400F7699D /* ofxTLFlags.h */,
 				E715F28E160C517400F7699D /* ofxTLImageSequence.cpp */,
@@ -732,7 +696,8 @@
 				E715F29D160C517400F7699D /* ofxTLSwitches.h */,
 				E715F29E160C517400F7699D /* ofxTLTicker.cpp */,
 				E715F29F160C517400F7699D /* ofxTLTicker.h */,
-				E715F2A0160C517400F7699D /* ofxTLTimeController.h */,
+				E7B084CC16253666001F60C8 /* ofxTLCameraTrack.cpp */,
+				E7B084CD16253666001F60C8 /* ofxTLCameraTrack.h */,
 				E715F2A1160C517400F7699D /* ofxTLTrack.cpp */,
 				E715F2A2160C517400F7699D /* ofxTLTrack.h */,
 				E715F2A3160C517400F7699D /* ofxTLTrackHeader.cpp */,
@@ -1431,8 +1396,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.mm in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				E715EAB8160C515400F7699D /* ofxTLCameraTrack.cpp in Sources */,
-				E715EAB9160C515400F7699D /* ofxCameraTrack.cpp in Sources */,
 				E715EADA160C515D00F7699D /* ofxMSATimer.cpp in Sources */,
 				E715EAF5160C516700F7699D /* ofxTimecode.cpp in Sources */,
 				E715F2DA160C517600F7699D /* ofxHotKeys_impl_mac.mm in Sources */,
@@ -1502,6 +1465,8 @@
 				E7C5D4001612CD76006E514C /* ofxMayaCam_impl_mac.mm in Sources */,
 				E7C5D4211612DF54006E514C /* ofxGameCamera.cpp in Sources */,
 				E7C5D6A516148674006E514C /* ofxRemoveCocoaMenu.mm in Sources */,
+				E7B084CB162534CC001F60C8 /* ofxTLLFO.cpp in Sources */,
+				E7B084CE16253666001F60C8 /* ofxTLCameraTrack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
