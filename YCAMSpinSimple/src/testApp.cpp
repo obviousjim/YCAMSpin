@@ -11,7 +11,7 @@ void testApp::setup(){
 	ofToggleFullscreen();
 	
 	drawCameraTrack = true;
-
+	drawLogo = false;
 	
 	ofxTimeline::removeCocoaMenusFromGlut("YCAM SPIN");
 	
@@ -63,9 +63,16 @@ void testApp::setup(){
     masterTimeline.addCurves("Perlin Density", "perlinDensity.xml", ofRange(0, sqrtf(2000)));
     masterTimeline.addCurves("Perlin Speed", "perlinSpeed.xml", ofRange(0, sqrtf(2)), 0);
     masterTimeline.addCurves("Wind Speed", "windSpeed.xml", ofRange(0, sqrtf(2)), 0);
+    masterTimeline.addCurves("Gravity Force", "gravityForce.xml", ofRange(0, sqrtf(2)), 0);
+    masterTimeline.addCurves("Gravity Delay", "gravityDelay.xml", ofRange(0, 4), 0);
 
 	masterTimeline.addPage("Type");
 	masterTimeline.addFlags("Letter");
+	string textString = "YCAM_InterLab";
+	for(int i = 0; i < textString.length(); i++){
+		masterTimeline.addCurves("orientation_" + ofToString(i), ofRange(0,360*5));
+		masterTimeline.addLFO("color_" + ofToString(i), ofRange(0,1.0));
+	}
 	//masterTimeline.addCurves("LetterDuration");
 	
 	ofAddListener(masterTimeline.events().bangFired, this, &testApp::flagReceived);
@@ -83,8 +90,6 @@ void testApp::setup(){
 	sequenceTimeline.addTrack("Depth", &sequence1);
 	sequenceTimeline.addFlags("LoopFlags");
 	
-	
-
 	masterTimeline.setDurationInSeconds(300);
 	masterTimeline.setLoopType(OF_LOOP_NORMAL);
 	calculatePreviewRects();
@@ -103,6 +108,8 @@ void testApp::setup(){
 	
     perlinForce = new CloudInterludeForcePerlin();
 	spinForce = new YCAMSpinForce();
+	gravityForce = new CloudInterludeForceGravity();
+	
 //    dragForce   = new CloudInterludeForceDrag();
 //    meshForce   = new CloudInterludeForceMeshAttractor();
 //    meshForce->mesh = &meshBuilder.getMesh();
@@ -110,7 +117,8 @@ void testApp::setup(){
     for(int i = 0; i < 50000; i++){
     	CloudInterludeParticleGenerator g;
         g.addForce(perlinForce);
-		g.addForce(spinForce);		
+		g.addForce(spinForce);
+		g.addForce(gravityForce);
         emmiters.push_back(g);
     }
     
@@ -119,11 +127,21 @@ void testApp::setup(){
         mesh.addColor(ofFloatColor(1.0,1.0,1.0,1.0));
         mesh.addTexCoord(ofVec2f(0.0,0.0));
     }
+	
+	ycamLogo.loadImage("interlab.png");
+	logo.init("GUI/mplus-1c-regular.ttf", 100, 10, textString);
+
 }
 
 //--------------------------------------------------------------
 void testApp::flagReceived(ofxTLBangEventArgs& bang){
-	cout << "received flag" << endl;
+	if(bang.flag == "showlogo"){
+		cout << "showing logo" << endl;
+		drawLogo = true;
+	}
+	else if (bang.flag == "hidelogo"){
+		drawLogo = false;
+	}
 }
 
 //--------------------------------------------------------------
@@ -162,7 +180,9 @@ void testApp::update(){
     perlinForce->density = powf( masterTimeline.getValue("Perlin Density"), 2.0);
     perlinForce->speed = powf( masterTimeline.getValue("Perlin Speed"), 2.0);
     spinForce->power = powf( masterTimeline.getValue("Wind Speed"), 2.0);
-	
+	gravityForce->gravity = powf( masterTimeline.getValue("Gravity Force"), 2.0);
+	gravityForce->maxDelay = masterTimeline.getValue("Gravity Delay");
+								 
     perlinForce->update();
 
     //GENERATOR
@@ -187,23 +207,15 @@ void testApp::update(){
 	for(int i = 0; i < meshBuilder.validVertIndices.size(); i++){
 	
         CloudInterludeParticleGenerator& g = emmiters[i];
-//        bool valid = renderer.isVertexValid(i);
-//		bool valid = meshBuilder.getMesh().getVertices()[i].z != 0;
-//        totalParticles += g.particles.size();
-//        if(valid){
-            g.birthRate = birthRate; //disable invisible verts
-            g.lifespan  = lifeSpan;
-            g.lifespanVariance = lifeSpanVariance;
-            g.position =  meshBuilder.getMesh().getVertices()[meshBuilder.validVertIndices[i]];
+		g.birthRate = birthRate; //disable invisible verts
+		g.lifespan  = lifeSpan;
+		g.lifespanVariance = lifeSpanVariance;
+		g.position =  meshBuilder.getMesh().getVertices()[meshBuilder.validVertIndices[i]];
+		g.remainingParticles = particlesPerEmitter;
+		g.showType = false;
 //            if(useColors && colorPalette.isAllocated()){
 //                g.texcoord = renderer.getMesh().getTexCoord( renderer.vertexIndex(i) );
 //            }
-            //g.remainingParticles = maxParticles - totalParticles;
-		g.remainingParticles = particlesPerEmitter;
-		g.showType = false;
-//            g.showType = showType;
-//            g.typeChance = typeChance;
-//        }
     }
 	
 //    cout << " total particles " << totalParticles << endl;
@@ -282,7 +294,8 @@ void testApp::draw(){
 //			pointCloudDOF.setUniform1i("useTexture", useColors && colorPalette.isAllocated() ? 1 : 0);
 		}
 		else{
-			glPointSize(masterTimeline.getValue("Min Point Size"));
+			//glPointSize(masterTimeline.getValue("Min Point Size"));
+			glPointSize(1.0);
 		}
 		
 //		if(useColors && colorPalette.isAllocated()){
@@ -329,7 +342,41 @@ void testApp::draw(){
 		ofSetColor(255, 100);
 		sequence1.getCurrentDepthImage().draw(prev1);
 	}
-	masterTimeline.getFont().drawString(ofToString(ofGetFrameRate()), 0, ofGetHeight()-10);
+	
+	if(drawLogo){
+		ofPushStyle();
+		ofEnableAlphaBlending();
+		// Draw each letter separately so that we can make each face a different color
+		ofPushMatrix();
+		ofTranslate(ofGetWidth()/2 - logo.getWidth()/2, ofGetHeight()*.66);
+
+		int accumulatedTranslation = 0;
+		for(int i=0; i<logo.letters.size(); i++){
+//			accumulatedTranslation += logo.letters[i].front.getCentroid().x;
+			
+			ofPushMatrix();
+			ofTranslate(logo.letters[i].front.getCentroid().x, 0);
+//			ofRotateY(ofGetFrameNum() * 3);
+			ofRotateY(-masterTimeline.getValue("orientation_" + ofToString(i)));
+			ofTranslate(-logo.letters[i].front.getCentroid().x, 0);
+
+			float alpha = powf(masterTimeline.getValue("color_" + ofToString(i)), 1.5)*100;
+			ofSetColor(255,255,255,alpha);
+			logo.letters[i].front.drawWireframe();
+			logo.letters[i].side.drawWireframe();
+			logo.letters[i].side.drawWireframe();
+			logo.letters[i].back.drawWireframe();
+			
+			ofPopMatrix();
+		}
+		
+		ofPopMatrix();
+		
+		
+		ofPopStyle();
+		cam.end();
+	}
+	masterTimeline.getFont().drawString(ofToString(ofGetFrameRate(),2) + "\nparticles: " + ofToString(totalParticles) + "/" + ofToString(masterTimeline.getValue("Max Particles"),0), 0, ofGetHeight()-20);
 
 	
 }
@@ -359,9 +406,12 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
+	if(masterTimeline.isModal()){
+		return;
+	}
+	
 	if(key == ' '){
 		masterTimeline.togglePlay();
-		
 		//sequenceTimeline.togglePlay();
 	}
 	
@@ -392,6 +442,9 @@ void testApp::keyReleased(int key){
 	if(key == 'L'){
 		camTrack.lockCameraToTrack = !camTrack.lockCameraToTrack;
 		cam.applyRotation = cam.applyTranslation = !camTrack.lockCameraToTrack;
+		if(!camTrack.lockCameraToTrack){
+			cam.setAnglesFromOrientation();
+		}
 	}
 	if(key == 'h'){
 		masterTimeline.toggleShow();

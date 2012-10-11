@@ -19,6 +19,7 @@ class CloudInterludeParticle {
         velocity = ofVec3f(0,0,0);
         force = ofVec3f(0,0,0);
         connectorEnergy = 0;
+		birthTime = 0;
         hasType = false;
     }
     
@@ -28,7 +29,7 @@ class CloudInterludeParticle {
         direction = velocity.getNormalized();
         force = ofVec3f(0,0,0);
         energy--;
-        connectorEnergy = MAX(connectorEnergy-1, 0);	
+        connectorEnergy = MAX(connectorEnergy-1, 0);
         energyPercent = energy/initialEnergy;
     }
     
@@ -38,6 +39,7 @@ class CloudInterludeParticle {
     float energy;
     float initialEnergy;
     float energyPercent;
+	float birthTime;
     ofVec3f origin;
     ofVec3f position;
     ofVec3f velocity;

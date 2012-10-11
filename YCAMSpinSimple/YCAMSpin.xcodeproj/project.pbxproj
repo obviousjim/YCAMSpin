@@ -104,6 +104,8 @@
 		E715F6C6160C532F00F7699D /* opencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E715F649160C532E00F7699D /* opencv_objdetect.a */; };
 		E715F6C7160C532F00F7699D /* opencv_video.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E715F64A160C532E00F7699D /* opencv_video.a */; };
 		E715F6F4160C540100F7699D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E715F6F3160C540100F7699D /* Accelerate.framework */; };
+		E79F5AF41626B3EF002B2B34 /* ofxExtrudedLetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79F5AEA1626B3EF002B2B34 /* ofxExtrudedLetter.cpp */; };
+		E79F5AF51626B3EF002B2B34 /* ofxExtrudedText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79F5AEC1626B3EF002B2B34 /* ofxExtrudedText.cpp */; };
 		E7B084CB162534CC001F60C8 /* ofxTLLFO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B084C9162534CC001F60C8 /* ofxTLLFO.cpp */; };
 		E7B084CE16253666001F60C8 /* ofxTLCameraTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B084CC16253666001F60C8 /* ofxTLCameraTrack.cpp */; };
 		E7C5D3FF1612CD76006E514C /* ofxMayaCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C5D3F51612CD76006E514C /* ofxMayaCam.cpp */; };
@@ -401,12 +403,16 @@
 		E715F64A160C532E00F7699D /* opencv_video.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = opencv_video.a; sourceTree = "<group>"; };
 		E715F6F3160C540100F7699D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E728C3931615ADC30083D311 /* CloudInterludeForce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeForce.h; sourceTree = "<group>"; };
-		E728C3941615ADC30083D311 /* CloudInterludeForceDrag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeForceDrag.h; sourceTree = "<group>"; };
+		E728C3941615ADC30083D311 /* CloudInterludeForceGravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeForceGravity.h; sourceTree = "<group>"; };
 		E728C3951615ADC30083D311 /* CloudInterludeForceMeshAttractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeForceMeshAttractor.h; sourceTree = "<group>"; };
 		E728C3961615ADC30083D311 /* CloudInterludeForcePerlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeForcePerlin.h; sourceTree = "<group>"; };
 		E728C3971615ADC30083D311 /* CloudInterludeParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeParticle.h; sourceTree = "<group>"; };
 		E728C3981615ADC40083D311 /* CloudInterludeParticleGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudInterludeParticleGenerator.h; sourceTree = "<group>"; };
 		E728C39E1615EB3D0083D311 /* YCAMSpinForce.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCAMSpinForce.h; sourceTree = "<group>"; };
+		E79F5AEA1626B3EF002B2B34 /* ofxExtrudedLetter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxExtrudedLetter.cpp; sourceTree = "<group>"; };
+		E79F5AEB1626B3EF002B2B34 /* ofxExtrudedLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxExtrudedLetter.h; sourceTree = "<group>"; };
+		E79F5AEC1626B3EF002B2B34 /* ofxExtrudedText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxExtrudedText.cpp; sourceTree = "<group>"; };
+		E79F5AED1626B3EF002B2B34 /* ofxExtrudedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxExtrudedText.h; sourceTree = "<group>"; };
 		E7B084C9162534CC001F60C8 /* ofxTLLFO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLLFO.cpp; sourceTree = "<group>"; };
 		E7B084CA162534CC001F60C8 /* ofxTLLFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTLLFO.h; sourceTree = "<group>"; };
 		E7B084CC16253666001F60C8 /* ofxTLCameraTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTLCameraTrack.cpp; sourceTree = "<group>"; };
@@ -507,6 +513,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				E79F5ABA1626B3EE002B2B34 /* ofxExtrudedText */,
 				E7C5D4251612F38E006E514C /* ofxUI */,
 				E7C5D4041612DF54006E514C /* ofxGameCamera */,
 				E7C5D3E41612CD76006E514C /* ofxMayaCam */,
@@ -587,7 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				E728C3931615ADC30083D311 /* CloudInterludeForce.h */,
-				E728C3941615ADC30083D311 /* CloudInterludeForceDrag.h */,
+				E728C3941615ADC30083D311 /* CloudInterludeForceGravity.h */,
 				E728C3951615ADC30083D311 /* CloudInterludeForceMeshAttractor.h */,
 				E728C3961615ADC30083D311 /* CloudInterludeForcePerlin.h */,
 				E728C3971615ADC30083D311 /* CloudInterludeParticle.h */,
@@ -1217,6 +1224,26 @@
 			path = osx;
 			sourceTree = "<group>";
 		};
+		E79F5ABA1626B3EE002B2B34 /* ofxExtrudedText */ = {
+			isa = PBXGroup;
+			children = (
+				E79F5AE91626B3EF002B2B34 /* src */,
+			);
+			name = ofxExtrudedText;
+			path = ../../../addons/ofxExtrudedText;
+			sourceTree = "<group>";
+		};
+		E79F5AE91626B3EF002B2B34 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E79F5AEA1626B3EF002B2B34 /* ofxExtrudedLetter.cpp */,
+				E79F5AEB1626B3EF002B2B34 /* ofxExtrudedLetter.h */,
+				E79F5AEC1626B3EF002B2B34 /* ofxExtrudedText.cpp */,
+				E79F5AED1626B3EF002B2B34 /* ofxExtrudedText.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		E7C5D3E41612CD76006E514C /* ofxMayaCam */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,6 +1494,8 @@
 				E7C5D6A516148674006E514C /* ofxRemoveCocoaMenu.mm in Sources */,
 				E7B084CB162534CC001F60C8 /* ofxTLLFO.cpp in Sources */,
 				E7B084CE16253666001F60C8 /* ofxTLCameraTrack.cpp in Sources */,
+				E79F5AF41626B3EF002B2B34 /* ofxExtrudedLetter.cpp in Sources */,
+				E79F5AF51626B3EF002B2B34 /* ofxExtrudedText.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

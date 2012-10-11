@@ -10,12 +10,14 @@
 #include "ofxGameCamera.h"
 #include "ofxUI.h"
 #include "ofxTLCameraTrack.h"
+#include "ofxExtrudedText.h"
 
 #include "CloudInterludeParticleGenerator.h"
 #include "CloudInterludeForcePerlin.h"
-#include "CloudInterludeForceDrag.h"
+#include "CloudInterludeForceGravity.h"
 #include "CloudInterludeForceMeshAttractor.h"
 #include "YCAMSpinForce.h"
+
 
 class testApp : public ofBaseApp{
   public:
@@ -48,7 +50,6 @@ class testApp : public ofBaseApp{
 	ofxRGBDMeshBuilder meshBuilder;
 	ofxGameCamera cam;
 	
-
 	bool showPointcloud;
 	void calculatePreviewRects();
 	ofRectangle prev1;
@@ -58,7 +59,7 @@ class testApp : public ofBaseApp{
 
 	vector<CloudInterludeParticleGenerator> emmiters;
     CloudInterludeForcePerlin* perlinForce;
-    CloudInterludeForceDrag* dragForce;
+    CloudInterludeForceGravity* gravityForce;
     CloudInterludeForceMeshAttractor* meshForce;
 	YCAMSpinForce* spinForce;
 	
@@ -69,7 +70,8 @@ class testApp : public ofBaseApp{
 	void copyVertsToMesh();
 	
 	vector<ofMesh> meshes;
-
-	
+	ofImage ycamLogo;
+	bool drawLogo;
+	ofxExtrudedText logo;
 	
 };

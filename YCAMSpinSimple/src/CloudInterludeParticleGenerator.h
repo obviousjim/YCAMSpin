@@ -30,6 +30,7 @@ class CloudInterludeParticleGenerator {
 		numToBear += birthRate;
 		if(numToBear > 1.0 && remainingParticles > 0){
 			CloudInterludeParticle p;
+			p.birthTime = ofGetElapsedTimef();
 			p.energy = p.initialEnergy = lifespan + ofRandom(-lifespanVariance/2, lifespanVariance/2);
 //			if(ofRandomuf() > .999){
 //				p.energy *= 50;
@@ -46,7 +47,7 @@ class CloudInterludeParticleGenerator {
 		}
 		
 		//sacrifice the rest
-		//numToBear -= int(numToBear);
+		numToBear -= int(numToBear);
 
 		if(particles.size() > 0){
 			for(int i = 0; i < forces.size(); i++){

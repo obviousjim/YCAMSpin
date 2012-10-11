@@ -1,20 +1,32 @@
 <positions>
+    <element name="Gravity Delay">
+        <x>0.000000000</x>
+        <y>708.000000000</y>
+        <width>800.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="Gravity Force">
+        <x>0.000000000</x>
+        <y>540.000000000</y>
+        <width>800.000000000</width>
+        <height>144.000000000</height>
+    </element>
     <element name="Perlin Amplitude">
         <x>0.000000000</x>
         <y>140.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>172.000000000</height>
     </element>
     <element name="Perlin Density">
         <x>0.000000000</x>
         <y>336.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>52.000000000</height>
     </element>
     <element name="Perlin Speed">
         <x>0.000000000</x>
         <y>412.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="Sequencer">
@@ -26,13 +38,13 @@
     <element name="Wind Speed">
         <x>0.000000000</x>
         <y>476.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="cue_perlin">
         <x>0.000000000</x>
         <y>70.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>46.000000000</height>
     </element>
 </positions>

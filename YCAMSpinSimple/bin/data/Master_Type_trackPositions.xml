@@ -1,8 +1,320 @@
 <positions>
+    <element name="">
+        <x>0.000000000</x>
+        <y>1016.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>312.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="1/TAKE_09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>760.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="15_38_28/depth">
+        <x>0.000000000</x>
+        <y>824.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="38_28/depth">
+        <x>0.000000000</x>
+        <y>120.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="38_28/depth_0">
+        <x>0.000000000</x>
+        <y>1464.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="8_28/depth">
+        <x>0.000000000</x>
+        <y>568.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="AKE_09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>1400.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="AM_Y_CAM1/TAKE_09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>376.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="Depth">
+        <x>0.000000000</x>
+        <y>1144.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="E_09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>440.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="Flags">
+        <x>0.000000000</x>
+        <y>1720.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="KE_09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>504.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
     <element name="Letter">
         <x>0.000000000</x>
         <y>70.000000000</y>
-        <width>800.000000000</width>
-        <height>386.000000000</height>
+        <width>960.000000000</width>
+        <height>59.000000000</height>
+    </element>
+    <element name="_0">
+        <x>0.000000000</x>
+        <y>1080.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="_Y_CAM1/TAKE_09_21_15_38_28/depth">
+        <x>0.000000000</x>
+        <y>248.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="ab.png">
+        <x>0.000000000</x>
+        <y>952.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="color_0">
+        <x>0.000000000</x>
+        <y>177.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_1">
+        <x>0.000000000</x>
+        <y>225.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_10">
+        <x>0.000000000</x>
+        <y>657.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_11">
+        <x>0.000000000</x>
+        <y>705.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_12">
+        <x>0.000000000</x>
+        <y>753.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_2">
+        <x>0.000000000</x>
+        <y>273.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_3">
+        <x>0.000000000</x>
+        <y>321.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_4">
+        <x>0.000000000</x>
+        <y>369.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_5">
+        <x>0.000000000</x>
+        <y>417.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_6">
+        <x>0.000000000</x>
+        <y>465.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_7">
+        <x>0.000000000</x>
+        <y>513.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_8">
+        <x>0.000000000</x>
+        <y>561.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="color_9">
+        <x>0.000000000</x>
+        <y>609.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="depth">
+        <x>0.000000000</x>
+        <y>632.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="epth">
+        <x>0.000000000</x>
+        <y>184.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="gs">
+        <x>0.000000000</x>
+        <y>1208.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="gs_0">
+        <x>0.000000000</x>
+        <y>1272.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="ng">
+        <x>0.000000000</x>
+        <y>1336.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="oopFlags">
+        <x>0.000000000</x>
+        <y>696.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="orientation_0">
+        <x>0.000000000</x>
+        <y>153.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_1">
+        <x>0.000000000</x>
+        <y>201.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_10">
+        <x>0.000000000</x>
+        <y>633.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_11">
+        <x>0.000000000</x>
+        <y>681.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_12">
+        <x>0.000000000</x>
+        <y>729.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_2">
+        <x>0.000000000</x>
+        <y>249.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_3">
+        <x>0.000000000</x>
+        <y>297.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_4">
+        <x>0.000000000</x>
+        <y>345.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_5">
+        <x>0.000000000</x>
+        <y>393.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_6">
+        <x>0.000000000</x>
+        <y>441.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_7">
+        <x>0.000000000</x>
+        <y>489.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_8">
+        <x>0.000000000</x>
+        <y>537.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="orientation_9">
+        <x>0.000000000</x>
+        <y>585.000000000</y>
+        <width>960.000000000</width>
+        <height>0.000000000</height>
+    </element>
+    <element name="pFlags">
+        <x>0.000000000</x>
+        <y>888.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="pFlags_0">
+        <x>0.000000000</x>
+        <y>1592.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="pth">
+        <x>0.000000000</x>
+        <y>1528.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="th">
+        <x>0.000000000</x>
+        <y>1656.000000000</y>
+        <width>960.000000000</width>
+        <height>40.000000000</height>
     </element>
 </positions>

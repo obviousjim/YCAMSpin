@@ -1,12 +1,12 @@
 <keyframes>
     <key>
-        <flag>start</flag>
-        <time>00:02:25:983</time>
-        <value>0.585492253</value>
+        <flag>showlogo</flag>
+        <time>00:02:25:785</time>
+        <value>0.932642460</value>
     </key>
     <key>
-        <flag>end</flag>
-        <time>00:02:53:374</time>
-        <value>0.409326434</value>
+        <flag>hidelogo</flag>
+        <time>00:03:08:003</time>
+        <value>0.988198161</value>
     </key>
 </keyframes>
