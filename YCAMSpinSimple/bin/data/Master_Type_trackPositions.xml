@@ -80,7 +80,7 @@
     <element name="Letter">
         <x>0.000000000</x>
         <y>70.000000000</y>
-        <width>960.000000000</width>
+        <width>800.000000000</width>
         <height>59.000000000</height>
     </element>
     <element name="_0">
@@ -103,80 +103,80 @@
     </element>
     <element name="color_0">
         <x>0.000000000</x>
-        <y>177.000000000</y>
-        <width>960.000000000</width>
+        <y>193.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_1">
         <x>0.000000000</x>
-        <y>225.000000000</y>
-        <width>960.000000000</width>
+        <y>241.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_10">
         <x>0.000000000</x>
-        <y>657.000000000</y>
-        <width>960.000000000</width>
+        <y>673.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_11">
         <x>0.000000000</x>
-        <y>705.000000000</y>
-        <width>960.000000000</width>
+        <y>721.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_12">
         <x>0.000000000</x>
-        <y>753.000000000</y>
-        <width>960.000000000</width>
+        <y>769.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_2">
         <x>0.000000000</x>
-        <y>273.000000000</y>
-        <width>960.000000000</width>
+        <y>289.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_3">
         <x>0.000000000</x>
-        <y>321.000000000</y>
-        <width>960.000000000</width>
+        <y>337.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_4">
         <x>0.000000000</x>
-        <y>369.000000000</y>
-        <width>960.000000000</width>
+        <y>385.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_5">
         <x>0.000000000</x>
-        <y>417.000000000</y>
-        <width>960.000000000</width>
+        <y>433.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_6">
         <x>0.000000000</x>
-        <y>465.000000000</y>
-        <width>960.000000000</width>
+        <y>481.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_7">
         <x>0.000000000</x>
-        <y>513.000000000</y>
-        <width>960.000000000</width>
+        <y>529.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_8">
         <x>0.000000000</x>
-        <y>561.000000000</y>
-        <width>960.000000000</width>
+        <y>577.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="color_9">
         <x>0.000000000</x>
-        <y>609.000000000</y>
-        <width>960.000000000</width>
+        <y>625.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="depth">
@@ -218,79 +218,79 @@
     <element name="orientation_0">
         <x>0.000000000</x>
         <y>153.000000000</y>
-        <width>960.000000000</width>
-        <height>0.000000000</height>
+        <width>800.000000000</width>
+        <height>16.000000000</height>
     </element>
     <element name="orientation_1">
         <x>0.000000000</x>
-        <y>201.000000000</y>
-        <width>960.000000000</width>
+        <y>217.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_10">
         <x>0.000000000</x>
-        <y>633.000000000</y>
-        <width>960.000000000</width>
+        <y>649.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_11">
         <x>0.000000000</x>
-        <y>681.000000000</y>
-        <width>960.000000000</width>
+        <y>697.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_12">
         <x>0.000000000</x>
-        <y>729.000000000</y>
-        <width>960.000000000</width>
+        <y>745.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_2">
         <x>0.000000000</x>
-        <y>249.000000000</y>
-        <width>960.000000000</width>
+        <y>265.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_3">
         <x>0.000000000</x>
-        <y>297.000000000</y>
-        <width>960.000000000</width>
+        <y>313.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_4">
         <x>0.000000000</x>
-        <y>345.000000000</y>
-        <width>960.000000000</width>
+        <y>361.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_5">
         <x>0.000000000</x>
-        <y>393.000000000</y>
-        <width>960.000000000</width>
+        <y>409.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_6">
         <x>0.000000000</x>
-        <y>441.000000000</y>
-        <width>960.000000000</width>
+        <y>457.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_7">
         <x>0.000000000</x>
-        <y>489.000000000</y>
-        <width>960.000000000</width>
+        <y>505.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_8">
         <x>0.000000000</x>
-        <y>537.000000000</y>
-        <width>960.000000000</width>
+        <y>553.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="orientation_9">
         <x>0.000000000</x>
-        <y>585.000000000</y>
-        <width>960.000000000</width>
+        <y>601.000000000</y>
+        <width>800.000000000</width>
         <height>0.000000000</height>
     </element>
     <element name="pFlags">
@@ -309,6 +309,18 @@
         <x>0.000000000</x>
         <y>1528.000000000</y>
         <width>960.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="textMasterFade">
+        <x>0.000000000</x>
+        <y>793.000000000</y>
+        <width>800.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="textMasterRotate">
+        <x>0.000000000</x>
+        <y>857.000000000</y>
+        <width>800.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="th">

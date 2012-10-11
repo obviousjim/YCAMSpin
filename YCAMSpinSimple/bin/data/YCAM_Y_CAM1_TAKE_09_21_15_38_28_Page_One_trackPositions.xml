@@ -1,13 +1,13 @@
 <positions>
     <element name="Depth">
         <x>0.000000000</x>
-        <y>825.000000000</y>
+        <y>917.000000000</y>
         <width>960.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="LoopFlags">
         <x>0.000000000</x>
-        <y>889.000000000</y>
+        <y>981.000000000</y>
         <width>960.000000000</width>
         <height>44.000000000</height>
     </element>

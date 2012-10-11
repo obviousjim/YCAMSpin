@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofSetFrameRate(60);
+	ofSetFrameRate(30);
 	ofBackground(255*.15);
 	ofEnableAlphaBlending();
 	ofEnableSmoothing();
@@ -20,6 +20,8 @@ void testApp::setup(){
 	masterTimeline.setName("Master");
 	masterTimeline.setup();
 	masterTimeline.setLoopType(OF_LOOP_NORMAL);
+	masterTimeline.setFrameRate(30);
+	masterTimeline.setFrameBased(true);
 	sequenceTimeline.setLoopType(OF_LOOP_NORMAL);
 	
 	sequenceTimeline.setName("YCAM_Y_CAM1_TAKE_09_21_15_38_28");
@@ -73,6 +75,8 @@ void testApp::setup(){
 		masterTimeline.addCurves("orientation_" + ofToString(i), ofRange(0,360*5));
 		masterTimeline.addLFO("color_" + ofToString(i), ofRange(0,1.0));
 	}
+	masterTimeline.addCurves("textMasterFade", ofRange(0,1.0), 1.0);
+	masterTimeline.addCurves("textMasterRotate", ofRange(0,89), 0);
 	//masterTimeline.addCurves("LetterDuration");
 	
 	ofAddListener(masterTimeline.events().bangFired, this, &testApp::flagReceived);
@@ -343,7 +347,10 @@ void testApp::draw(){
 		sequence1.getCurrentDepthImage().draw(prev1);
 	}
 	
-	if(drawLogo){
+	float textMasterFade = masterTimeline.getValue("textMasterFade");
+	if(drawLogo && textMasterFade > 0){
+		float testMasterRotate = masterTimeline.getValue("textMasterRotate");
+		
 		ofPushStyle();
 		ofEnableAlphaBlending();
 		// Draw each letter separately so that we can make each face a different color
@@ -357,10 +364,10 @@ void testApp::draw(){
 			ofPushMatrix();
 			ofTranslate(logo.letters[i].front.getCentroid().x, 0);
 //			ofRotateY(ofGetFrameNum() * 3);
-			ofRotateY(-masterTimeline.getValue("orientation_" + ofToString(i)));
+			ofRotateY(-masterTimeline.getValue("orientation_" + ofToString(i)) + testMasterRotate);
 			ofTranslate(-logo.letters[i].front.getCentroid().x, 0);
 
-			float alpha = powf(masterTimeline.getValue("color_" + ofToString(i)), 1.5)*100;
+			float alpha = powf(textMasterFade*masterTimeline.getValue("color_" + ofToString(i)), 1.5)*100;
 			ofSetColor(255,255,255,alpha);
 			logo.letters[i].front.drawWireframe();
 			logo.letters[i].side.drawWireframe();
